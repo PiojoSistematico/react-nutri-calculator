@@ -78,9 +78,8 @@ function App() {
   let weightZScore = 0;
   let heightZScore = 0;
   let weightHeightZScore = 0;
-  console.log(months, imcAgeBoys);
 
-  if (months > 60) {
+  if (months > 60 && months < 229) {
     //IMC score
     weightZScore = 0;
     heightZScore = 0;
@@ -96,7 +95,7 @@ function App() {
       valueS = imcAgeGirls[months]["S"];
     }
     imcZScore = zScore(patientIMC, valueM, valueL, valueS);
-  } /*else {
+  } else if (months >= 0 && months <= 60) {
     //Weight score
     imcZScore = 0;
     if (patientGender === "Boy") {
@@ -120,30 +119,31 @@ function App() {
       valueS = heightAgeGirls[months]["S"];
     }
     heightZScore = zScore(patientHeight, valueM, valueL, valueS);
-    if (months > 24) {
+    //Weight/Height score
+    if (months > 24 && patientHeight >= 65 && patientHeight <= 120) {
       if (patientGender === "Boy") {
-        valueM = weightHeightBoys02[patientHeight]["M"];
-        valueL = weightHeightBoys02[patientHeight]["L"];
-        valueS = weightHeightBoys02[patientHeight]["S"];
+        valueM = weightHeightBoys25[Number(patientHeight).toFixed(1)]["M"];
+        valueL = weightHeightBoys25[Number(patientHeight).toFixed(1)]["L"];
+        valueS = weightHeightBoys25[Number(patientHeight).toFixed(1)]["S"];
       } else {
-        valueM = weightHeightGirls02[patientHeight]["M"];
-        valueL = weightHeightGirls02[patientHeight]["L"];
-        valueS = weightHeightGirls02[patientHeight]["S"];
+        valueM = weightHeightGirls25[Number(patientHeight).toFixed(1)]["M"];
+        valueL = weightHeightGirls25[Number(patientHeight).toFixed(1)]["L"];
+        valueS = weightHeightGirls25[Number(patientHeight).toFixed(1)]["S"];
       }
-      weightHeightZScore = zScore(patientHeight, valueM, valueL, valueS);
-    } else {
+      weightHeightZScore = zScore(patientWeight, valueM, valueL, valueS);
+    } else if (patientHeight >= 45 && patientHeight <= 110) {
       if (patientGender === "Boy") {
-        valueM = weightHeightBoys25[patientHeight]["M"];
-        valueL = weightHeightBoys25[patientHeight]["L"];
-        valueS = weightHeightBoys25[patientHeight]["S"];
+        valueM = weightHeightBoys02[Number(patientHeight).toFixed(1)]["M"];
+        valueL = weightHeightBoys02[Number(patientHeight).toFixed(1)]["L"];
+        valueS = weightHeightBoys02[Number(patientHeight).toFixed(1)]["S"];
       } else {
-        valueM = weightHeightGirls25[patientHeight]["M"];
-        valueL = weightHeightGirls25[patientHeight]["L"];
-        valueS = weightHeightGirls25[patientHeight]["S"];
+        valueM = weightHeightGirls02[Number(patientHeight).toFixed(1)]["M"];
+        valueL = weightHeightGirls02[Number(patientHeight).toFixed(1)]["L"];
+        valueS = weightHeightGirls02[Number(patientHeight).toFixed(1)]["S"];
       }
-      weightHeightZScore = zScore(patientHeight, valueM, valueL, valueS);
+      weightHeightZScore = zScore(patientWeight, valueM, valueL, valueS);
     }
-  } */
+  }
 
   return (
     <div className="App">
