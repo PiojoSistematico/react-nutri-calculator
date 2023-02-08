@@ -146,70 +146,76 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Hello</h1>
-      <section>
-        <label>Gender</label>
-        <label htmlFor="gender1">
-          <input
-            type="radio"
-            id="gender1"
-            name="gender"
-            value="Boy"
-            onChange={handleChange}
-            defaultChecked
-          />
-          Boy
-        </label>
-        <label htmlFor="gender2">
-          <input
-            type="radio"
-            id="gender2"
-            name="gender"
-            value="Girl"
-            onChange={handleChange}
-          />
-          Girl
-        </label>
+    <div className="App bg-gray-400 grid grid-cols-2">
+      <section className="h-">
+        <form action="#" className="flex flex-col w-4/5 h-4/5">
+          <label>Gender</label>
+          <label htmlFor="gender1">
+            <input
+              type="radio"
+              id="gender1"
+              name="gender"
+              value="Boy"
+              onChange={handleChange}
+              defaultChecked
+            />
+            Boy
+          </label>
+          <label htmlFor="gender2">
+            <input
+              type="radio"
+              id="gender2"
+              name="gender"
+              value="Girl"
+              onChange={handleChange}
+            />
+            Girl
+          </label>
 
-        <label htmlFor="fechaNacimiento">Date of Birth</label>
-        <input
-          type="date"
-          name="fechaNacimiento"
-          onChange={(e) => setDob(new Date(e.target.value))}
-        />
+          <label htmlFor="fechaNacimiento">
+            Date of Birth
+            <input
+              type="date"
+              name="fechaNacimiento"
+              onChange={(e) => setDob(new Date(e.target.value))}
+            />
+          </label>
+          <label htmlFor="peso">
+            Weight (Kg)
+            <input
+              type="number"
+              name="pesoActual"
+              id="pesoActual"
+              min="0"
+              max="300"
+              onChange={(e) => setPatientWeight(e.target.value)}
+            />
+          </label>
 
-        <label htmlFor="peso">Weight (Kg)</label>
-        <input
-          type="number"
-          name="pesoActual"
-          id="pesoActual"
-          min="0"
-          max="300"
-          onChange={(e) => setPatientWeight(e.target.value)}
-        />
-
-        <label htmlFor="talla">Height (cm)</label>
-        <input
-          type="number"
-          name="talla"
-          id="talla"
-          min="0"
-          max="300"
-          onChange={(e) => setPatientHeight(e.target.value)}
-        />
-
-        {/* <button onClick={calculateIMC}>Calculate</button> */}
+          <label htmlFor="talla">
+            Height (cm)
+            <input
+              type="number"
+              name="talla"
+              id="talla"
+              min="0"
+              max="300"
+              onChange={(e) => setPatientHeight(e.target.value)}
+            />
+          </label>
+        </form>
       </section>
-      <p>
-        Age = {Math.floor(months / 12)} years ({months} months)
-      </p>
-      <p>IMC = {patientIMC}</p>
-      <p>Gender = {patientGender}</p>
-      <p>ZSCORE (IMC) = {imcZScore}</p>
-      <p>ZSCORE (Weight) = {weightZScore}</p>
-      <p>ZSCORE (Height) = {heightZScore}</p>
-      <p>ZSCORE (W/H) = {weightHeightZScore}</p>
+      <section>
+        <p>
+          Age = {Math.floor(months / 12)} years ({months} months)
+        </p>
+        <p>IMC = {patientIMC}</p>
+        <p>Gender = {patientGender}</p>
+        <p>ZSCORE (IMC) = {imcZScore}</p>
+        <p>ZSCORE (Weight) = {weightZScore}</p>
+        <p>ZSCORE (Height) = {heightZScore}</p>
+        <p>ZSCORE (W/H) = {weightHeightZScore}</p>
+      </section>
     </div>
   );
 }
