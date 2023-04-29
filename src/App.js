@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 
 function App() {
   const [heightAgeBoys, setHeightAgeBoys] = useState(undefined);
@@ -146,43 +145,50 @@ function App() {
   }
 
   return (
-    <div className="App bg-gray-400 grid grid-cols-2">
-      <section className="h-">
-        <form action="#" className="flex flex-col w-4/5 h-4/5">
-          <label>Gender</label>
-          <label htmlFor="gender1">
-            <input
-              type="radio"
-              id="gender1"
-              name="gender"
-              value="Boy"
-              onChange={handleChange}
-              defaultChecked
-            />
-            Boy
-          </label>
-          <label htmlFor="gender2">
-            <input
-              type="radio"
-              id="gender2"
-              name="gender"
-              value="Girl"
-              onChange={handleChange}
-            />
-            Girl
-          </label>
+    <div className="App">
+      <main>
+        <form action="#" className="">
+          <h1>Patient Data</h1>
+          <div className="grid-gender">
+            <label>Gender</label>
+            <div>
+              <input
+                type="radio"
+                id="gender1"
+                name="gender"
+                value="Boy"
+                onChange={handleChange}
+                defaultChecked
+              />
+              <label htmlFor="gender1">Boy</label>
+            </div>
 
-          <label htmlFor="fechaNacimiento">
-            Date of Birth
+            <div>
+              <input
+                type="radio"
+                id="gender2"
+                name="gender"
+                value="Girl"
+                onChange={handleChange}
+              />
+              <label htmlFor="gender2">Girl</label>
+            </div>
+          </div>
+
+          <div className="two-column">
+            <label htmlFor="fechaNacimiento">Date of Birth</label>
             <input
+              className="input-50"
               type="date"
               name="fechaNacimiento"
               onChange={(e) => setDob(new Date(e.target.value))}
             />
-          </label>
-          <label htmlFor="peso">
-            Weight (Kg)
+          </div>
+
+          <div className="two-column">
+            <label htmlFor="peso">Weight (Kg)</label>
             <input
+              className="input-50  wh"
               type="number"
               name="pesoActual"
               id="pesoActual"
@@ -190,11 +196,14 @@ function App() {
               max="300"
               onChange={(e) => setPatientWeight(e.target.value)}
             />
-          </label>
+          </div>
 
-          <label htmlFor="talla">
-            Height (cm)
+          <div className="two-column">
+            <label className="two-column" htmlFor="talla">
+              Height (cm)
+            </label>
             <input
+              className="input-50 wh"
               type="number"
               name="talla"
               id="talla"
@@ -202,20 +211,35 @@ function App() {
               max="300"
               onChange={(e) => setPatientHeight(e.target.value)}
             />
-          </label>
+          </div>
         </form>
-      </section>
-      <section>
-        <p>
-          Age = {Math.floor(months / 12)} years ({months} months)
-        </p>
-        <p>IMC = {patientIMC}</p>
-        <p>Gender = {patientGender}</p>
-        <p>ZSCORE (IMC) = {imcZScore}</p>
-        <p>ZSCORE (Weight) = {weightZScore}</p>
-        <p>ZSCORE (Height) = {heightZScore}</p>
-        <p>ZSCORE (W/H) = {weightHeightZScore}</p>
-      </section>
+        <section className="result-section">
+          <h1>Results</h1>
+          <div className="result-grid">
+            <span className="result">Age</span>
+            <span className="equal">=</span>
+            <span className="value">
+              {Math.floor(months / 12)} years,
+              {months - 12 * Math.floor(months / 12)} months
+            </span>
+            <span className="result">IMC</span>
+            <span className="equal">=</span>
+            <span className="value">{patientIMC.toFixed(2)}</span>
+            <span className="result">Zscore (IMC)</span>
+            <span className="equal">=</span>
+            <span className="value">{imcZScore.toFixed(2)}</span>
+            <span className="result">Zscore (Weight)</span>
+            <span className="equal">=</span>
+            <span className="value">{weightZScore.toFixed(2)}</span>
+            <span className="result">Zscore (Height)</span>
+            <span className="equal">=</span>
+            <span className="value">{heightZScore.toFixed(2)}</span>
+            <span className="result">Zscore (W/H)</span>
+            <span className="equal">=</span>
+            <span className="value">{weightHeightZScore.toFixed(2)}</span>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

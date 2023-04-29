@@ -1,17 +1,234 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  /* From tailwind */
+  --tw-text-opacity: 1;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Colors */
+  --clr-purple-050: rgba(245, 243, 255, 1);
+  --clr-purple-100: rgba(237, 233, 254, 1);
+  --clr-purple-200: rgba(221, 214, 254, 1);
+  --clr-purple-300: rgba(196, 181, 253, 1);
+  --clr-purple-400: rgba(167, 139, 250, 1);
+  --clr-purple-500: rgba(139, 92, 246, 1);
+  --clr-purple-600: rgba(124, 58, 237, 1);
+  --clr-purple-700: rgba(109, 40, 217, 1);
+  --clr-purple-800: rgba(91, 33, 182, 1);
+  --clr-purple-900: rgba(76, 29, 149, 1);
+
+  --clr-pink-050: rgba(253, 242, 248, 1);
+  --clr-pink-100: rgba(252, 231, 243, 1);
+  --clr-pink-200: rgba(251, 207, 232, 1);
+  --clr-pink-300: rgba(249, 168, 212, 1);
+  --clr-pink-400: rgba(244, 114, 182, 1);
+  --clr-pink-500: rgba(236, 72, 153, 1);
+  --clr-pink-600: rgba(219, 39, 119, 1);
+  --clr-pink-700: rgba(190, 24, 93, 1);
+  --clr-pink-800: rgba(157, 23, 77, 1);
+  --clr-pink-900: rgba(131, 24, 67, 1);
+
+  --clr-gray-050: rgba(249, 250, 251, 1);
+  --clr-gray-100: rgba(243, 244, 246, 1);
+  --clr-gray-200: rgba(229, 231, 235, 1);
+  --clr-gray-300: rgba(209, 213, 219, 1);
+  --clr-gray-400: rgba(156, 163, 175, 1);
+  --clr-gray-500: rgba(107, 114, 128, 1);
+  --clr-gray-600: rgba(75, 85, 99, 1);
+  --clr-gray-700: rgba(55, 65, 81, 1);
+  --clr-gray-800: rgba(31, 41, 55, 1);
+  --clr-gray-900: rgba(17, 24, 39, 1);
+
+  /* Font Family */
+  --font-family-montserrat: "Montserrat", sans-serif;
+  --font-family-playfair: "Playfair Display", serif;
+  --font-family-roboto: "Roboto", sans-serif;
+
+  /* Font Weight */
+  --font-weight-bold: 700;
+  --font-weight-regular: 400;
+
+  /* Font Size */
+  --font-size-200: 0.75rem;
+  --font-size-300: 0.875rem;
+  --font-size-400: 1rem;
+  --font-size-500: 1.125rem;
+  --font-size-600: 1.25rem;
+  --font-size-700: 1.5rem;
+  --font-size-800: 1.875rem;
+  --font-size-900: 2.25rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* Reset */
+/*  https://piccalil.li/blog/a-modern-css-reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* General styling */
+
+body {
+  background-color: var(--clr-gray-300);
+  color: var(--clr-gray-900);
+  font-family: var(--font-family-playfair);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-300);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+main {
+  width: 320px;
+  height: 600px;
+  background-color: var(--clr-gray-100);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  /* box-shadow: 0 0 1rem 0.5rem var(--clr-gray-200); */
+}
+
+.grid-gender {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  width: 100%;
+  align-items: center;
+}
+
+.input-50 {
+  height: 30px;
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  text-align: right;
+}
+
+.wh {
+  width: 50%;
+  justify-self: end;
+  padding-right: 0.5rem;
+}
+
+h1 {
+  font-size: var(--font-size-600);
+  font-weight: var(--font-weight-bold);
+}
+
+form {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 1rem;
+  align-items: start;
+}
+
+.result-section {
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+  gap: 1rem;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: 4fr 1fr 4fr;
+}
+
+.value,
+.equal {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Media queries */
+@media (min-width: 40em) {
+  main {
+    width: 640px;
+    height: 320px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  form {
+    align-items: start;
+  }
 }
